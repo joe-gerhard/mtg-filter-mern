@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FETCH } from '../redux/constants';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
-import CardDisplay from '../components/CardDisplay';
+import Main from '../components/Main';
+import FilterPage from './FilterPage';
 
 const App = () => {
 
@@ -24,7 +26,10 @@ const App = () => {
   return (
   <>
     <Navbar />
-    <CardDisplay />
+    <Switch>
+      <Route path="/filter" component={FilterPage} />
+      <Route path="/" component={Main} />
+    </Switch>
     <Footer />
   </>
   )

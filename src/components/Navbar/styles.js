@@ -1,7 +1,18 @@
 import styled, {css} from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const StyledNavbar = styled.nav(({theme}) => css`
+export const StyledNavbar = styled.nav(({ theme }) => css`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   background: ${theme.dark};
   color: ${theme.light};
-  height: 40px;
+  height: 44px;
+  padding: 0 10vw;
+`);
+
+export const StyledLink = styled(Link)(({ theme }) => css`
+  color: ${theme.light};
+  text-decoration: none;
+  margin: 0 20px;
 `);

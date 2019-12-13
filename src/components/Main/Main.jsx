@@ -4,7 +4,7 @@ import { StyledMain } from './styles';
 const Main = () => {
   return (
     <StyledMain>
-      This is the main body
+      Welcome to MTG filter. 
     </StyledMain>
   )
 }

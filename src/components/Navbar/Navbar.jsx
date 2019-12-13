@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyledNavbar } from './styles';
+import { StyledNavbar, StyledLink } from './styles';
 
 const Navbar = () => {
   return (
     <StyledNavbar>
-      This is the navbar
+      <StyledLink to="/">Home</StyledLink>
+      <StyledLink to="/filter">Filter</StyledLink>
     </StyledNavbar>
   )
 }

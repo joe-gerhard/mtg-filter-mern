@@ -4,7 +4,7 @@ import { StyledFooter } from './styles';
 const Footer = () => {
   return (
     <StyledFooter>
-      This is the footer
+      Made by Joe Gerhard
     </StyledFooter>
   )
 }

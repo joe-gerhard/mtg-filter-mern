@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const StyledCardDisplay = styled.div(({ theme }) => css`
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 88px);
   background: ${theme.light};
   display: flex;
   flex-wrap: wrap;

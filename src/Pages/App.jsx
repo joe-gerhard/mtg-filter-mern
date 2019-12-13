@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FETCH } from '../redux/constants';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
-import Main from '../components/Main';
+import CardDisplay from '../components/CardDisplay';
 
 const App = () => {
 
@@ -24,7 +24,7 @@ const App = () => {
   return (
   <>
     <Navbar />
-    <Main />
+    <CardDisplay />
     <Footer />
   </>
   )

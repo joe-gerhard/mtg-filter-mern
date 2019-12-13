@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import LoadingBar from '../LoadingBar';
+import { StyledCardDisplay, Card } from './styles';
 
 const CardDisplay = () => {
 
@@ -8,12 +9,12 @@ const CardDisplay = () => {
   const loading = !(cards.length > 0)
 
   return (
-    <div>
+    <StyledCardDisplay>
       {loading && <LoadingBar />}
       {cards && cards.map(card => (
-        <img key={card.multiverseid} src={card.imageUrl} alt={card.name} />
+        <Card key={card.multiverseid} src={card.imageUrl} alt={card.name} />
       ))}
-    </div>
+    </StyledCardDisplay>
   );
 }
 

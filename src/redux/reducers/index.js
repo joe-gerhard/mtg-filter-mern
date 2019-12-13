@@ -1,25 +1,40 @@
 const initialState = {
   sets: [],
+  selectedSet: null,
   cards: [],
-  test: "Redux is connected and working properly",
 }
 
 const rootReducer = (state = initialState, action) => {
   switch(action.type) {
-    case "SETS_LOADED": return {
-      ...state,
-      sets: action.payload.sets.filter(set => set.type === "core" || set.type === "expansion")
-      .sort((a, b) => {
-        if (a.releaseDate.slice(0, 4) - b.releaseDate.slice(0, 4) > 0)
-          return 1;
-        if (a.releaseDate.slice(0, 4) - b.releaseDate.slice(0, 4) < 0)
-          return -1;
-        return a.releaseDate.slice(5, 7) - b.releaseDate.slice(5, 7);
-      })
-      .reverse(),
-    }
+    case "SETS_LOADED": 
+
+      let sortedSets = filterAndSortSets(action.payload.sets);
+      let mostRecentSet = sortedSets[0].code;
+
+      return {
+        ...state,
+        sets: sortedSets,
+        selectedSet: mostRecentSet,
+      }
+    case "CARDS_LOADED":
+      return {
+        ...state,
+        cards: action.payload,
+      }
     default: return state;
   }
+}
+
+function filterAndSortSets(sets) {
+  return sets.filter(set => set.type === "core" || set.type === "expansion")
+  .sort((a, b) => {
+    if (a.releaseDate.slice(0, 4) - b.releaseDate.slice(0, 4) > 0)
+      return 1;
+    if (a.releaseDate.slice(0, 4) - b.releaseDate.slice(0, 4) < 0)
+      return -1;
+    return a.releaseDate.slice(5, 7) - b.releaseDate.slice(5, 7);
+  })
+  .reverse()
 }
 
 export default rootReducer;

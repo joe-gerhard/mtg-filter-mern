@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FETCH } from '../redux/constants';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
 import Main from '../components/Main';
-import SetSelector from '../components/SetSelector/SetSelector';
 
 const App = () => {
+
+  const selectedSet = useSelector(state => state.selectedSet);
 
   const dispatch = useDispatch();
 
@@ -14,10 +15,15 @@ const App = () => {
     dispatch({ type: FETCH.SETS })
   }, [dispatch]);
 
+  useEffect(() => {
+    if (selectedSet) {
+      dispatch({ type: FETCH.CARDS, payload: selectedSet })
+    }
+  }, [selectedSet, dispatch])
+
   return (
   <>
     <Navbar />
-    <SetSelector />
     <Main />
     <Footer />
   </>

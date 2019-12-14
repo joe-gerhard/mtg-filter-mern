@@ -1,7 +1,20 @@
 const initialState = {
   sets: [],
-  selectedSet: null,
+  selectedSet: '',
   cards: [],
+  filter: {
+    Blue: false,
+    White: false,
+    Black: false,
+    Red: false,
+    Green: false,
+    Colorless: false,
+    Common: false,
+    Uncommon: false,
+    Rare: false,
+    Mythic: false,
+    text: ""
+  }
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -20,6 +33,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         cards: action.payload,
+      }
+    case "SELECT_SET":
+      return {
+        ...state,
+        selectedSet: action.payload,
       }
     default: return state;
   }

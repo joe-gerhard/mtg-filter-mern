@@ -39,6 +39,21 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         selectedSet: action.payload,
       }
+    case "SET_FILTER":
+      let tempFilter = {...state.filter}
+      tempFilter[action.payload] = !tempFilter[action.payload];
+      return {
+        ...state,
+        filter: tempFilter,
+      }
+    case "SET_TEXT_FILTER":
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          text: action.payload,
+        }
+      }
     default: return state;
   }
 }

@@ -10,7 +10,7 @@ const FilterBar = () => {
   const dispatch = useDispatch();
 
   const handleSetFilter = event => {
-    dispatch({ type: "SET_FILTER", payload: !filter[event.target.name] });
+    dispatch({ type: "SET_FILTER", payload: event.target.name });
   };
 
   const handleSetTextFilter = event => {

@@ -2,6 +2,7 @@ const initialState = {
   sets: [],
   selectedSet: '',
   cards: [],
+  user: {},
   filter: {
     Blue: false,
     White: false,
@@ -53,6 +54,11 @@ const rootReducer = (state = initialState, action) => {
           ...state.filter,
           text: action.payload,
         }
+      }
+    case "LOGIN_SUCCESSFUL":
+      return {
+        ...state,
+        user: action.payload,
       }
     default: return state;
   }

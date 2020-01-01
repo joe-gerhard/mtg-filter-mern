@@ -6,6 +6,7 @@ const Navbar = () => {
     <StyledNavbar>
       <StyledLink to="/">Home</StyledLink>
       <StyledLink to="/filter">Filter</StyledLink>
+      <StyledLink to="/login">Login</StyledLink>
     </StyledNavbar>
   )
 }

@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
 import Main from '../components/Main';
 import FilterPage from './FilterPage';
+import LoginPage from './LoginPage';
 
 const App = () => {
 
@@ -27,8 +28,9 @@ const App = () => {
   <>
     <Navbar />
     <Switch>
-      <Route path="/filter" component={FilterPage} />
-      <Route path="/" component={Main} />
+      <Route exact path="/filter" component={FilterPage} />
+      <Route exact path="/login" component={LoginPage} />
+      <Route exact path="/" component={Main} />
     </Switch>
     <Footer />
   </>

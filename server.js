@@ -6,6 +6,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 
+require('dotenv').config();
+
 let user = {};
 
 passport.serializeUser((user, cb) => {
@@ -16,11 +18,12 @@ passport.deserializeUser((user, cb) => {
   cb(null, user);
 })
 
+
 // Google Strategy
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_SECRET,
-  callbackUrl: process.env.GOOGLE_CALLBACK,
+  callbackURL: "http://localhost:3000/auth/google/callback",
 }, 
   (accessToken, refreshToken, profile, cb) => {
     console.log(JSON.stringify(profile))
@@ -40,9 +43,12 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get("/auth/google", passport.authenticate("google")); 
-app.get("/oath2callback", passport.authenticate("google"), 
+app.get("/auth/google", passport.authenticate("google", {
+  scope: ["profile", "email"]
+})); 
+app.get("/auth/google/callback", passport.authenticate("google"), 
   (req, res) => {
+  console.log('its working');
   res.redirect("/profile");
 })
 

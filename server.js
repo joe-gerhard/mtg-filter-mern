@@ -23,7 +23,7 @@ passport.deserializeUser((user, cb) => {
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/callback",
+  callbackURL: "/auth/google/callback",
 }, 
   (accessToken, refreshToken, profile, cb) => {
     console.log(JSON.stringify(profile))
@@ -46,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.get("/auth/google", passport.authenticate("google", {
   scope: ["profile", "email"]
 })); 
+
 app.get("/auth/google/callback", passport.authenticate("google"), 
   (req, res) => {
   console.log('its working');

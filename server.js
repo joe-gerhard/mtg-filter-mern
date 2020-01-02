@@ -47,11 +47,10 @@ app.get("/auth/google", passport.authenticate("google", {
   scope: ["profile", "email"]
 })); 
 
-app.get("/auth/google/callback", passport.authenticate("google"), 
-  (req, res) => {
-  console.log('its working');
-  res.redirect("/profile");
-})
+app.get("/auth/google/callback", passport.authenticate("google", {
+  successRedirect: '/profile',
+  failureRedirect: '/',
+}));
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

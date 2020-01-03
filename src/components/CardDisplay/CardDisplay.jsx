@@ -5,13 +5,12 @@ import { StyledCardDisplay, Card } from './styles';
 
 const CardDisplay = () => {
 
-  const { cards, filter } = useSelector(state => state);
-  const loading = !(cards.length > 0)
+  const { cards, filter, loading } = useSelector(state => state);
 
   return (
     <StyledCardDisplay>
       {loading && <LoadingBar />}
-      {cards && cards.map(card => {
+      {cards && !loading && cards.map(card => {
         let filtered = false;
 
         if (filter.text !== '') {

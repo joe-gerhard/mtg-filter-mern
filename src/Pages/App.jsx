@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import Main from '../components/Main';
 import FilterPage from './FilterPage';
 import LoginPage from './LoginPage';
+import ProfilePage from './ProfilePage';
 
 const App = () => {
 
@@ -30,6 +31,7 @@ const App = () => {
     <Switch>
       <Route exact path="/filter" component={FilterPage} />
       <Route exact path="/login" component={LoginPage} />
+      <Route exact path="/profile" component={ProfilePage} />
       <Route exact path="/" component={Main} />
     </Switch>
     <Footer />

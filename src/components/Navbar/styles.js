@@ -16,3 +16,14 @@ export const StyledLink = styled(Link)(({ theme }) => css`
   text-decoration: none;
   margin: 0 20px;
 `);
+
+export const StyledLogoutButton = styled.button(({ theme }) => css`
+  border: none;
+  background: none;
+  color: ${theme.light};
+  margin: 0 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`);

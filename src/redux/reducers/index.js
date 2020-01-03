@@ -3,6 +3,7 @@ const initialState = {
   selectedSet: '',
   cards: [],
   user: {},
+  loading: true,
   filter: {
     Blue: false,
     White: false,
@@ -34,6 +35,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         cards: action.payload,
+        loading: false,
       }
     case "SELECT_SET":
       return {
@@ -59,6 +61,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+      }
+    case "BEGIN_LOADING":
+      return {
+        ...state,
+        loading: true,
       }
     default: return state;
   }

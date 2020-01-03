@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FETCH } from '../redux/constants';
 import Navbar from '../components/Navbar'
@@ -11,7 +11,7 @@ import ProfilePage from './ProfilePage';
 
 const App = () => {
 
-  const selectedSet = useSelector(state => state.selectedSet);
+  const { selectedSet, user } = useSelector(state => state);
 
   const dispatch = useDispatch();
 
@@ -31,8 +31,12 @@ const App = () => {
     <Switch>
       <Route exact path="/filter" component={FilterPage} />
       <Route exact path="/login" component={LoginPage} />
-      <Route exact path="/profile" component={ProfilePage} />
+      {user.name && <Route exact path="/profile" component={ProfilePage} />}
       <Route exact path="/" component={Main} />
+      <Route path="/">
+        <Redirect to='/' />
+      </Route>
+      } />
     </Switch>
     <Footer />
   </>

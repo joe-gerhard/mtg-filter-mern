@@ -9,10 +9,7 @@ const ProfilePage = () => {
 
   return (
     <>
-    { user 
-      ? <UserProfile />
-      : <Redirect to="/login" />
-    }
+      <UserProfile />
     </>
   )
 }

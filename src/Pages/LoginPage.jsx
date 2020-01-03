@@ -1,10 +1,10 @@
 import React from 'react';
 import LoginLinks from '../components/LoginLinks';
 
-const LoginPage = () => {
+const LoginPage = props => {
   return (
     <>
-      <LoginLinks />
+      <LoginLinks {...props } />
     </>
   )
 }

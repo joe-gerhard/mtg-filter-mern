@@ -55,7 +55,7 @@ const rootReducer = (state = initialState, action) => {
           text: action.payload,
         }
       }
-    case "LOGIN_SUCCESSFUL":
+    case "SET_USER":
       return {
         ...state,
         user: action.payload,

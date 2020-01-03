@@ -7,7 +7,6 @@ const url = 'https://api.magicthegathering.io/v1/';
 export default function* rootSaga() {
   yield takeEvery(FETCH.SETS, fetchSets);
   yield takeEvery(FETCH.CARDS, fetchCards);
-  yield takeEvery("LOGIN_WITH_GOOGLE", loginWithGoogle)
 }
 
 function* fetchSets() {
@@ -26,19 +25,6 @@ function* fetchCards(action) {
   } catch (e) {
     yield put({ type: "API_ERRORED", payload: e })
   }
-}
-
-function* loginWithGoogle(action) {
-  try {
-    const payload = yield call(googleLogin);
-    yield put({ type: "LOGIN_SUCCESSFUL", payload });
-  } catch (e) {
-    yield put({ type: "LOGIN_FAILED", payload: e });
-  }
-}
-
-function googleLogin() {
-  return fetch("/auth/google")
 }
 
 function getSets() {

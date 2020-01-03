@@ -3,20 +3,25 @@ import { StyledLoginLinks } from './styles';
 import { GoogleLogin } from 'react-google-login';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 
-const LoginLinks = ({ history }) => {
+const LoginLinks = () => {
 
   const { user } = useSelector(state => state)
   const dispatch = useDispatch();
 
   const responseGoogle = (response) => {
-    if (response.profileObj) {
-      dispatch({ type: 'SET_USER', payload: response.profileObj})
-      history.push('/profile');
-    } else {
-      console.log('Error logging in with Google');
-    }
+
+    console.log(response);
+
+    axios.post('/user/google', {
+      profile: response.profileObj
+    }).then((postResponse) => {
+      dispatch({type: 'SET_USER', payload: postResponse.data })
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   return (

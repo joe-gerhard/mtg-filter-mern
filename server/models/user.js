@@ -9,7 +9,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: String,
+  imageUrl: String,
+  googleId: String,
+  givenName: String,
+  familyName: String,
 }, {timestamps: true});
 
 module.exports = mongoose.model('User', UserSchema);

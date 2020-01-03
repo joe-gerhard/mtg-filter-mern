@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { StyledUserProfile } from './styles';
 
 const UserProfile = () => {
-
-  useEffect(() => {
-    fetch('/user')
-  }, [])
   
   return (
     <StyledUserProfile>

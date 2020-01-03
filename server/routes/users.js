@@ -2,8 +2,18 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
-router.get('/', (req, res) => {
-  console.log('this is the users router');
+router.post('/google', (req, res) => {
+  const { googleId, imageUrl, email, name, givenName, familyName } = req.body.profile;
+  User.findOne({googleId: googleId}, (err, user) => {
+    if (user) {
+      console.log(user);
+      res.send(user);
+    } else {
+      User.create({ googleId, imageUrl, email, name, givenName, familyName }, (err, user) => {
+        res.send(user);
+      })
+    }
+  })
 })
 
 module.exports = router;

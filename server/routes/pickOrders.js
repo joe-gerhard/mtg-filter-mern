@@ -9,9 +9,16 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/create', (req, res) => {
-  console.log(req.body);
   PickOrder.create(req.body, (err, pickOrder) => {
     res.send(pickOrder);
+  })
+})
+
+router.put('/:id', (req, res) => {
+  console.log(req.body.inputs);
+
+  PickOrder.findByIdAndUpdate(req.params.id, {
+    
   })
 })
 

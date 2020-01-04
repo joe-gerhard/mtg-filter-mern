@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledPickOrder } from './styles';
+import { StyledPickOrder, StyledInput, StyledTable, StyledRow, StyledCell } from './styles';
 import { useSelector } from 'react-redux';
 
 const PickOrder = ({ id }) => {
@@ -11,11 +11,15 @@ const PickOrder = ({ id }) => {
   return (
     <StyledPickOrder>
       <h1>{pickOrder.name}</h1>
-      <ul>
-        {pickOrder.picks.map(pick => (
-          <li key={pick.name}>{pick.name}</li>
-        ))}
-      </ul>
+      <StyledTable>
+          {pickOrder.picks.map((pick, idx) => (
+            <StyledRow key={pick.name} even={idx % 2 === 0}>
+              <StyledCell>{pick.name}</StyledCell>
+              <StyledCell>Pick Order: <StyledInput type="number" name="pickOrder" defaultValue={pick.pickOrder} /></StyledCell>
+              <StyledCell>Tier: <StyledInput type="number" name="tier" defaultValue={pick.tier} /></StyledCell>
+            </StyledRow>
+          ))}
+      </StyledTable>
     </StyledPickOrder>
   )
 }

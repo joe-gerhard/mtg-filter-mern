@@ -4,11 +4,11 @@ const User = require('../models/user');
 
 router.post('/google', (req, res) => {
   const { googleId, imageUrl, email, name, givenName, familyName } = req.body.profile;
-  User.findOne({googleId: googleId}, (err, user) => {
+  User.findOne({googleId}, (err, user) => {
     if (user) {
-      console.log(user);
       res.send(user);
-    } else {
+    } 
+    else {
       User.create({ googleId, imageUrl, email, name, givenName, familyName }, (err, user) => {
         res.send(user);
       })

@@ -13,13 +13,13 @@ const LoginLinks = () => {
 
   const responseGoogle = (response) => {
 
-    console.log(response);
-
     axios.post('/user/google', {
       profile: response.profileObj
-    }).then((postResponse) => {
-      dispatch({type: 'SET_USER', payload: postResponse.data })
-    }).catch(err => {
+    })
+    .then((axiosResponse) => {
+      dispatch({type: 'SET_USER', payload: axiosResponse.data })
+    })
+    .catch(err => {
       console.log(err);
     })
   }

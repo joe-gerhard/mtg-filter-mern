@@ -2,6 +2,7 @@ const initialState = {
   sets: [],
   selectedSet: '',
   cards: [],
+  pickOrders: [],
   user: {},
   loading: true,
   filter: {
@@ -66,6 +67,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+      }
+    case "SET_PICK_ORDERS":
+      return {
+        ...state,
+        pickOrders: action.payload,
       }
     default: return state;
   }

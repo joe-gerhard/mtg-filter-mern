@@ -8,6 +8,8 @@ import Main from '../components/Main';
 import FilterPage from './FilterPage';
 import LoginPage from './LoginPage';
 import ProfilePage from './ProfilePage';
+import CreatePickOrderPage from './CreatePickOrderPage';
+import ShowPickOrderPage from './ShowPickOrderPage';
 
 const App = () => {
 
@@ -32,6 +34,8 @@ const App = () => {
       <Route exact path="/filter" component={FilterPage} />
       <Route exact path="/login" component={LoginPage} />
       {user.name && <Route exact path="/profile" component={ProfilePage} />}
+      {user.name && <Route exact path="/pickOrders/create" component={CreatePickOrderPage} />}
+      {user.name && <Route exact path="/pickOrders/:id" component={ShowPickOrderPage} />}
       <Route exact path="/" component={Main} />
       <Route path="/">
         <Redirect to='/' />

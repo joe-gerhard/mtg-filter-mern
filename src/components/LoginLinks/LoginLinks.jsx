@@ -17,7 +17,8 @@ const LoginLinks = () => {
       profile: response.profileObj
     })
     .then((axiosResponse) => {
-      dispatch({type: 'SET_USER', payload: axiosResponse.data })
+      
+      dispatch({type: 'SET_USER', payload: axiosResponse.data });
     })
     .catch(err => {
       console.log(err);

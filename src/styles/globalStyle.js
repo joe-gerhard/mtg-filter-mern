@@ -12,6 +12,18 @@ const GlobalStyle = createGlobalStyle`
       outline: 0;
     }
   }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
 `
 
 export default GlobalStyle;

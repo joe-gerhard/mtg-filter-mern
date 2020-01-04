@@ -54,7 +54,8 @@ function createDefaultPickOrder(cards) {
     let pickObj = {
       name: card.name,
       pickOrder: (idx + 1),
-      tier: 1
+      tier: 1, 
+      imageUrl: card.imageUrl,
     }
     picks.push(pickObj);
   })

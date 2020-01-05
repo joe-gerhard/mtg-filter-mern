@@ -32,13 +32,19 @@ const PickOrder = ({ id }) => {
 
   const handleChange = event => {
     const [type, card] = event.target.name.split('|');
+    let value = event.target.value;
+
+    if(type === 'tier' && value > 8) value = 8;
+    if(type === 'tier' && value < 1) value = 1;
+    if(type === 'pickOrder' && value > 999) value = 999;
+    if(type === 'pickOrder' && value < 1) value = 1;
 
     console.log(type, card);
     setInputs({
       ...inputs,
       [card]: {
         ...inputs[card],
-        [type]: event.target.value
+        [type]: value
       }
     })
   }
@@ -60,6 +66,8 @@ const PickOrder = ({ id }) => {
                     id={`${idx}PickOrder`}
                     value={inputs[pick.name].pickOrder}
                     onChange={handleChange}
+                    min="1"
+                    max="999"
                   />
                 </StyledCell>
                 <StyledCell>
@@ -70,6 +78,8 @@ const PickOrder = ({ id }) => {
                     id={`${idx}Tier`}
                     value={inputs[pick.name].tier}
                     onChange={handleChange}
+                    min="1"
+                    max="8"
                   />
                 </StyledCell>
               </StyledRow>

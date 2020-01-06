@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom';
 const ShowPickOrderPage = () => {
   const { id } = useParams();
 
-  return <PickOrder id={id} />
+  return <PickOrder id={id}/>
 }
 
 export default ShowPickOrderPage;
+

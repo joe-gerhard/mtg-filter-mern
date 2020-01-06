@@ -7,6 +7,12 @@ export const StyledCardDisplay = styled.div(({ theme }) => css`
   flex-wrap: wrap;
   padding: 20px;
   justify-content: center;
+
+  h1 {
+    text-align: center;
+    background: ${theme.dark + '22'};
+    border-radius: 8px;
+  }
 `);
 
 export const Card = styled.img`
@@ -16,3 +22,27 @@ export const Card = styled.img`
   width: 15vw;
   object-fit: fill;
 `;
+
+export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const CardDetails = styled.div(({ theme }) => css`
+  display: flex;
+  font-size: 10px;
+  justify-content: space-around;
+  background: ${theme.dark + '22'};
+  border-radius: 8px;
+  width: 12vw;
+`);
+
+export const StyledTier = styled.div(({ theme, color }) => css`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: center;
+  background: ${color + '22'};
+  border-radius: 8px;
+`);

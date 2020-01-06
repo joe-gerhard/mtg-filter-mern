@@ -1,70 +1,70 @@
 import React, { useState } from 'react'
 import { StyledPickOrder, StyledInput, StyledTable, StyledRow, StyledCell } from './styles';
-import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 
 const PickOrder = ({ id }) => {
 
-  const { pickOrders } = useSelector(state => state);
-
+  const { pickOrders }  = useSelector(state => state)
+  const dispatch = useDispatch();
   const pickOrder = pickOrders.find(pickOrder => pickOrder._id === id);
-
-  const [ inputs, setInputs ] = useState(getInputs(pickOrder.picks))
-
-
-  function getInputs(picks) {
-    let inputs = {}
-    picks.forEach((pick, idx) => {
-      inputs[pick.name] = {
-        pickOrder: pick.pickOrder,
-        tier: pick.tier
-      }
-    })
-    return inputs;
-  }
+  const [ picks, setPicks ] = useState(pickOrder.picks);
+  const history = useHistory();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.put(`/pickOrders/${id}`, {
-      inputs
+    axios.put(`/pickOrders/${pickOrder._id}`, {
+      picks
+    })
+    .then(response => {
+      pickOrders[pickOrders.findIndex(pickOrder => pickOrder._id === id)] = response.data;
+      dispatch({type: 'SET_PICK_ORDERS', payload: pickOrders})
+      console.log(response.data);
     })
   }
 
   const handleChange = event => {
-    const [type, card] = event.target.name.split('|');
+    const [ idx, type ] = event.target.id.split('|');
     let value = event.target.value;
+    let picksCopy = [...picks]
 
     if(type === 'tier' && value > 8) value = 8;
     if(type === 'tier' && value < 1) value = 1;
     if(type === 'pickOrder' && value > 999) value = 999;
     if(type === 'pickOrder' && value < 1) value = 1;
 
-    console.log(type, card);
-    setInputs({
-      ...inputs,
-      [card]: {
-        ...inputs[card],
-        [type]: value
-      }
-    })
+    console.log(type, idx, value);
+    
+    picksCopy[idx][type] = value;
+    picksCopy.sort((a, b) => a.pickOrder - b.pickOrder)
+
+    setPicks(picksCopy)
+  }
+  
+  const handleApplyToFilter = () => {
+    history.push(`/filter/${id}`)
   }
 
   return (
     <StyledPickOrder>
       <h1>{pickOrder.name}</h1>
+      <h3>{pickOrder.setName}</h3>
       <form onSubmit={handleSubmit}>
-        <input type="submit" value="submit"/>
+        <input type="submit" value="save"/>
+        <button onClick={handleApplyToFilter}>Apply to filter</button>
         <StyledTable>
-            {pickOrder.picks.map((pick, idx) => (
+            {picks.map((pick, idx) => (
               <StyledRow key={pick.name} even={idx % 2 === 0}>
                 <StyledCell>{pick.name}</StyledCell>
                 <StyledCell>
-                  <label htmlFor={`${idx}PickOrder`}>Pick Order:</label>
+                  <label htmlFor={idx}>Pick Order:</label>
                   <StyledInput
                     type="number" 
-                    name={`pickOrder|${pick.name}`}
-                    id={`${idx}PickOrder`}
-                    value={inputs[pick.name].pickOrder}
+                    name="pickOrder"
+                    id={`${idx}|pickOrder`}
+                    value={pick.pickOrder}
                     onChange={handleChange}
                     min="1"
                     max="999"
@@ -74,9 +74,9 @@ const PickOrder = ({ id }) => {
                   <label htmlFor={`${idx}Tier`}>Tier:</label> 
                   <StyledInput 
                     type="number" 
-                    name={`tier|${pick.name}`}
-                    id={`${idx}Tier`}
-                    value={inputs[pick.name].tier}
+                    name="tier"
+                    id={`${idx}|tier`}
+                    value={pick.tier}
                     onChange={handleChange}
                     min="1"
                     max="8"

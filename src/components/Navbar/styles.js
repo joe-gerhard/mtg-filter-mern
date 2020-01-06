@@ -9,6 +9,7 @@ export const StyledNavbar = styled.nav(({ theme }) => css`
   color: ${theme.light};
   height: 44px;
   padding: 0 10vw;
+  font-size: 14px;
 `);
 
 export const StyledLink = styled(Link)(({ theme }) => css`

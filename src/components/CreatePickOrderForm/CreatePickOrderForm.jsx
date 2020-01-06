@@ -18,9 +18,9 @@ const CreatePickOrderForm = () => {
   const handleSubmit = () => {
     axios.post('/pickOrders/create', {
       name,
+      setName: selectedSet,
       userId: user._id, 
       picks: createDefaultPickOrder(cards),
-      set: selectedSet,
     })
     .then(response => {
       history.push('/profile');
@@ -53,7 +53,7 @@ function createDefaultPickOrder(cards) {
   cards.forEach((card, idx) => {
     let pickObj = {
       name: card.name,
-      pickOrder: (idx + 1),
+      pickOrder: 999,
       tier: 1, 
       imageUrl: card.imageUrl,
     }

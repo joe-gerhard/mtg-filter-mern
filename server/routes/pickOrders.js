@@ -10,15 +10,16 @@ router.get('/:id', (req, res) => {
 
 router.post('/create', (req, res) => {
   PickOrder.create(req.body, (err, pickOrder) => {
+    console.log('creating new pick order')
     res.send(pickOrder);
   })
 })
 
 router.put('/:id', (req, res) => {
-  console.log(req.body.inputs);
-
   PickOrder.findByIdAndUpdate(req.params.id, {
-    
+    picks: req.body.picks
+  }, { new: true }, (err, pickOrder) => {
+    res.send(pickOrder);
   })
 })
 

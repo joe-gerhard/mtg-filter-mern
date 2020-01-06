@@ -8,9 +8,11 @@ const pickOrderSchema = new Schema({
         type: String,
         default: 'untitled'
     },
+    setName: {
+      type: String
+    },
     userId: String,
-    picks: [Object]
-    
+    picks: [Object],
 }, {
     timestamps: true
 });

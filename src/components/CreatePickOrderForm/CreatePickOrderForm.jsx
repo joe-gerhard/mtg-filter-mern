@@ -50,7 +50,7 @@ export default CreatePickOrderForm;
 function createDefaultPickOrder(cards) {
   let picks = [];
 
-  cards.forEach((card, idx) => {
+  cards.forEach((card) => {
     let pickObj = {
       name: card.name,
       pickOrder: 999,

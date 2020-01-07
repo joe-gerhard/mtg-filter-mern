@@ -72,6 +72,7 @@ async function getCards(activeSet) {
   resultArr.forEach(result => {
     combinedResults = [...combinedResults, ...result.data.cards];
   });
+  
   combinedResults = combinedResults.filter(card => {
     return (
       card.imageUrl &&

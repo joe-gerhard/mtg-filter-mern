@@ -26,7 +26,7 @@ const CardDisplay = ({ pickOrder }) => {
   return (
     <StyledCardDisplay>
       {loading && <LoadingBar />}
-      {cards && !loading && <Tiers filteredCards={filteredCards}/>}
+      {cards && !loading && <Tiers filteredCards={filteredCards} />}
     </StyledCardDisplay>
   );
 }

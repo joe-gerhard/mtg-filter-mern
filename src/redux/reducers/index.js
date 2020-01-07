@@ -33,6 +33,11 @@ const rootReducer = (state = initialState, action) => {
         selectedSet: mostRecentSet,
       }
     case "CARDS_LOADED":
+      let cards = action.payload;
+      cards.forEach((card, idx) => {
+        card.tier = '1';
+        card.pickOrder = idx + 1;
+      })
       return {
         ...state,
         cards: action.payload,
@@ -44,11 +49,12 @@ const rootReducer = (state = initialState, action) => {
         selectedSet: action.payload,
       }
     case "SET_FILTER":
-      let tempFilter = {...state.filter}
-      tempFilter[action.payload] = !tempFilter[action.payload];
+      let filter = {...state.filter}
+      filter[action.payload] = !filter[action.payload];
+
       return {
         ...state,
-        filter: tempFilter,
+        filter,
       }
     case "SET_TEXT_FILTER":
       return {

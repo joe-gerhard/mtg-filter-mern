@@ -14,7 +14,7 @@ const Tier = ({ tier, filteredCards, color }) => {
                 <Card src={card.imageUrl} alt={card.name} />
                 <CardDetails>
                   <div>
-                    {card.pickOrder}) {card.name}
+                    [{card.tier}] {card.pickOrder}) {card.name}
                   </div>
                 </CardDetails>
               </CardContainer>

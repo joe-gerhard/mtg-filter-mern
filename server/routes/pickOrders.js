@@ -17,7 +17,8 @@ router.post('/create', (req, res) => {
 
 router.put('/:id', (req, res) => {
   PickOrder.findByIdAndUpdate(req.params.id, {
-    picks: req.body.picks
+    picks: req.body.picks,
+    name: req.body.name,
   }, { new: true }, (err, pickOrder) => {
     res.send(pickOrder);
   })

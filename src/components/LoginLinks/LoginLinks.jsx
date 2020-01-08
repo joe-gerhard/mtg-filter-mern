@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledLoginLinks } from './styles';
+import { StyledLoginLinks, ButtonContainer } from './styles';
 import { GoogleLogin } from 'react-google-login';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -29,12 +29,14 @@ const LoginLinks = () => {
     <StyledLoginLinks>
       {user.name 
         ? <Redirect to="/profile" /> 
-        : <GoogleLogin 
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-          />
+        : <ButtonContainer >
+            <GoogleLogin 
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              buttonText="Login"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+            />
+          </ButtonContainer>
       }   
     </StyledLoginLinks>
   )

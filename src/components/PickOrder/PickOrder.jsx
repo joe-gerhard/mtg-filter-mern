@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyledPickOrder, StyledInput, StyledTable, StyledRow, StyledCell } from './styles';
+import { StyledPickOrder, StyledInput, StyledTable, StyledRow, StyledCell, NameInput } from './styles';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -11,17 +11,18 @@ const PickOrder = ({ id }) => {
   const dispatch = useDispatch();
   const pickOrder = pickOrders.find(pickOrder => pickOrder._id === id);
   const [ picks, setPicks ] = useState(pickOrder.picks);
+  const [ name, setName ] = useState(pickOrder.name)
   const history = useHistory();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.put(`/pickOrders/${pickOrder._id}`, {
-      picks
+      picks,
+      name
     })
     .then(response => {
       pickOrders[pickOrders.findIndex(pickOrder => pickOrder._id === id)] = response.data;
       dispatch({type: 'SET_PICK_ORDERS', payload: pickOrders})
-      console.log(response.data);
     })
   }
 
@@ -34,13 +35,15 @@ const PickOrder = ({ id }) => {
     if(type === 'tier' && value < 1) value = 1;
     if(type === 'pickOrder' && value > 999) value = 999;
     if(type === 'pickOrder' && value < 1) value = 1;
-
-    console.log(type, idx, value);
     
     picksCopy[idx][type] = value;
     picksCopy.sort((a, b) => a.pickOrder - b.pickOrder)
 
     setPicks(picksCopy)
+  }
+
+  const handleChangeName = event => {
+    setName(event.target.value);
   }
   
   const handleApplyToFilter = () => {
@@ -49,7 +52,7 @@ const PickOrder = ({ id }) => {
 
   return (
     <StyledPickOrder>
-      <h1>{pickOrder.name}</h1>
+      <h1><NameInput type="text" value={name} onChange={handleChangeName}/></h1>
       <h3>{pickOrder.setName}</h3>
       <form onSubmit={handleSubmit}>
         <input type="submit" value="save"/>

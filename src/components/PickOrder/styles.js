@@ -44,3 +44,11 @@ export const StyledCell = styled.div(({ theme, ...props }) => css`
     margin-left: auto;
   }
 `);
+
+export const NameInput = styled.input`
+  font-size: 24px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: center;
+  border: 1px solid lightgrey;
+`;

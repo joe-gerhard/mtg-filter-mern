@@ -44,3 +44,13 @@ export const Button = styled.button(({
   opacity: ${selected ? .4 : 1};
   transition: opacity .3s;
 `)
+
+export const ResetButton = styled.button(({ theme }) => css`
+  background: transparent;
+  border: 1px solid ${theme.light};
+  border-radius: 5px;
+  color: ${theme.light};
+  padding: 0 5px;
+  margin: 5px .25vw;
+  transition: opacity .3s;
+`);

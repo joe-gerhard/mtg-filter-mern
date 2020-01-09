@@ -44,6 +44,7 @@ export const StyledCell = styled.div(({ theme, ...props }) => css`
   &:nth-child(2) {
     margin-left: auto;
   }
+  cursor: default;
 `);
 
 export const StyledForm = styled.form`

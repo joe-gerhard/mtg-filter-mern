@@ -64,6 +64,23 @@ const rootReducer = (state = initialState, action) => {
           text: action.payload,
         }
       }
+    case "RESET_FILTER":
+      return {
+        ...state,
+        filter: {
+          Blue: false,
+          White: false,
+          Black: false,
+          Red: false,
+          Green: false,
+          Colorless: false,
+          Common: false,
+          Uncommon: false,
+          Rare: false,
+          Mythic: false,
+          text: ""
+        }
+      }
     case "SET_USER":
       return {
         ...state,

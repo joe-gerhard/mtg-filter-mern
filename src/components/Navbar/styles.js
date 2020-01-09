@@ -23,6 +23,7 @@ export const StyledLogoutButton = styled.button(({ theme }) => css`
   background: none;
   color: ${theme.light};
   margin: 0 20px;
+  font-size: 14px;
 
   &:hover {
     cursor: pointer;

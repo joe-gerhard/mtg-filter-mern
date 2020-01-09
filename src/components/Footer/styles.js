@@ -8,4 +8,5 @@ export const StyledFooter = styled.footer(({ theme }) => css`
   color: ${theme.light};
   height: 44px;
   padding: 0 10vw;
+  font-size: 14px;
 `);

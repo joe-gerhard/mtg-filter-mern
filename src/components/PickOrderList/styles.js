@@ -5,4 +5,5 @@ export const StyledPickOrders = styled.div(({ theme }) => css`
   flex-direction: column;
   padding: 20px;
   height: 200px;
+  font-size: 14px;
 `);

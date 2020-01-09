@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyledPickOrder, StyledInput, StyledTable, StyledRow, StyledCell, NameInput } from './styles';
+import { StyledPickOrder, StyledInput, StyledTable, StyledRow, StyledCell, NameInput, ApplyButton, SaveButton, StyledForm, StyledImage } from './styles';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -12,6 +12,7 @@ const PickOrder = ({ id }) => {
   const pickOrder = pickOrders.find(pickOrder => pickOrder._id === id);
   const [ picks, setPicks ] = useState(pickOrder.picks);
   const [ name, setName ] = useState(pickOrder.name)
+  const [ focusedCard, setFocusedCard ] = useState('');
   const history = useHistory();
 
   const handleSubmit = (event) => {
@@ -50,16 +51,32 @@ const PickOrder = ({ id }) => {
     history.push(`/filter/${id}`)
   }
 
+  const handleMouseEnter = (imageUrl) => {
+    setFocusedCard(imageUrl);
+  }
+
+  const handleMouseLeave = event => {
+    setFocusedCard('');
+  }
+
   return (
     <StyledPickOrder>
+      <StyledImage src={focusedCard} alt=''/>
       <h1><NameInput type="text" value={name} onChange={handleChangeName}/></h1>
-      <h3>{pickOrder.setName}</h3>
-      <form onSubmit={handleSubmit}>
-        <input type="submit" value="save"/>
-        <button onClick={handleApplyToFilter}>Apply to filter</button>
+      <h3>Set: {pickOrder.setName}</h3>
+      <StyledForm onSubmit={handleSubmit}>
+        <div>
+          <SaveButton type="submit" value="Save"/>
+          <ApplyButton onClick={handleApplyToFilter}>Apply to filter</ApplyButton>
+        </div>
         <StyledTable>
             {picks.map((pick, idx) => (
-              <StyledRow key={pick.name} even={idx % 2 === 0}>
+              <StyledRow 
+                key={pick.name} 
+                even={idx % 2 === 0} 
+                onMouseEnter={() => handleMouseEnter(pick.imageUrl)}
+                onMouseLeave={handleMouseLeave}
+              >
                 <StyledCell>{pick.name}</StyledCell>
                 <StyledCell>
                   <label htmlFor={idx}>Pick Order:</label>
@@ -88,7 +105,7 @@ const PickOrder = ({ id }) => {
               </StyledRow>
             ))}
         </StyledTable>
-      </form>
+      </StyledForm>
     </StyledPickOrder>
   )
 }

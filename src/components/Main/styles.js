@@ -7,4 +7,5 @@ export const StyledMain = styled.main(({ theme }) => css`
   display: flex;
   justify-content: center;
   padding: 20px;
+  font-size: 14px;
 `);

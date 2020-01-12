@@ -1,7 +1,6 @@
 
 import React, { useEffect } from 'react'
-import { StyledPickOrders } from './styles';
-import { Link } from 'react-router-dom';
+import { StyledPickOrders, Table, Row, Cell, StyledLink, ButtonLink } from './styles';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -22,10 +21,37 @@ const PickOrderList = () => {
 
   return (
     <StyledPickOrders>
-      {pickOrders.map(pickOrder => (
-        <Link to={`pickOrders/${pickOrder._id}`}key={pickOrder._id}>{pickOrder.name}</Link>
-      ))}
-      <Link to="/pickOrders/create">Create a new pick order</Link>
+      <h1>{user.name}'s Pick Orders</h1>
+      <Table>
+        <Row header>
+          <Cell>
+            Name
+          </Cell>
+          <Cell>
+            Set
+          </Cell>
+          <Cell>
+            Date Created
+          </Cell>
+        </Row>
+        {pickOrders.map(pickOrder => (
+          <Row key={pickOrder._id}>
+            <Cell>
+              <StyledLink to={`pickOrders/${pickOrder._id}`}>{pickOrder.name}</StyledLink>
+            </Cell>
+            <Cell>
+              {console.log(pickOrder)}
+              {pickOrder.setName}
+            </Cell>
+            <Cell>
+              {pickOrder.createdAt}
+            </Cell>
+          </Row>
+        ))}
+        <Row footer>
+          <ButtonLink to="/pickOrders/create">Create a new pick order</ButtonLink>
+        </Row>
+      </Table>
     </StyledPickOrders>
   )
 }

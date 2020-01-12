@@ -45,6 +45,11 @@ export const Cell = styled.div(({ theme }) => css`
 export const StyledLink = styled(Link)(({ theme }) => css`
   color: ${theme.dark};
   text-decoration: none;
+
+  &:hover {
+    color: grey;
+    cursor: pointer;
+  }
 `);
 
 export const ButtonLink = styled(Link)(({ theme }) => css`

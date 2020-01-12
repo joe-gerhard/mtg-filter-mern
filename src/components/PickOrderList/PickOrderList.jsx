@@ -34,7 +34,9 @@ const PickOrderList = () => {
             Date Created
           </Cell>
         </Row>
-        {pickOrders.map(pickOrder => (
+        {pickOrders.map(pickOrder => {
+          const date = new Date(pickOrder.createdAt)
+          return (
           <Row key={pickOrder._id}>
             <Cell>
               <StyledLink to={`pickOrders/${pickOrder._id}`}>{pickOrder.name}</StyledLink>
@@ -44,10 +46,10 @@ const PickOrderList = () => {
               {pickOrder.setName}
             </Cell>
             <Cell>
-              {pickOrder.createdAt}
+              {date.toDateString()}
             </Cell>
           </Row>
-        ))}
+        )})}
         <Row footer>
           <ButtonLink to="/pickOrders/create">Create a new pick order</ButtonLink>
         </Row>

@@ -17,25 +17,21 @@ export const Table = styled.div(({ theme }) => css`
   width: 50vw;
 `);
 
-export const Row = styled.div(({ theme, header, footer }) => {
-
-  let background = 'white';
-
-  if(header) {
-    background = theme.dark;
-  } 
-
-  if(footer) {
-    background = theme.light;
-  }
-
-  return css`
+export const Row = styled.div(({ theme, header, footer }) => css`
   padding: 5px;
   display: flex;
   align-items: center;
-  background: ${background};
+  background: ${header ? theme.dark : 'white'};
   color: ${header ? theme.light : theme.dark};
-`});
+  
+  &:first-child {
+    border-radius: 8px 8px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 8px 8px;
+  }
+`);
 
 export const Cell = styled.div(({ theme }) => css`
   margin-left: auto;

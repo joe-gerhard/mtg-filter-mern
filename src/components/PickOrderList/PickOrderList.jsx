@@ -42,7 +42,6 @@ const PickOrderList = () => {
               <StyledLink to={`pickOrders/${pickOrder._id}`}>{pickOrder.name}</StyledLink>
             </Cell>
             <Cell>
-              {console.log(pickOrder)}
               {pickOrder.setName}
             </Cell>
             <Cell>
@@ -50,10 +49,8 @@ const PickOrderList = () => {
             </Cell>
           </Row>
         )})}
-        <Row footer>
-          <ButtonLink to="/pickOrders/create">Create a new pick order</ButtonLink>
-        </Row>
       </Table>
+      <ButtonLink to="/pickOrders/create">Create a new pick order</ButtonLink>
     </StyledPickOrders>
   )
 }

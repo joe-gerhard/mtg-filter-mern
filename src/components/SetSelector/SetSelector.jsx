@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { StyledSelect } from './styles';
 
-const SetSelector = () => {
+const SetSelector = ({ light }) => {
 
   const { sets, selectedSet } = useSelector(state => state);
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const SetSelector = () => {
   }
 
   return (
-    <StyledSelect value={selectedSet} onChange={handleChange}>
+    <StyledSelect value={selectedSet} onChange={handleChange} light={light}>
     {sets && sets.map(set => (
       <option key={set.code}>{set.code}</option>
     ))}

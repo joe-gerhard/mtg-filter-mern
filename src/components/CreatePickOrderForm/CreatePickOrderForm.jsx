@@ -34,7 +34,7 @@ const CreatePickOrderForm = () => {
     <StyledCreatePickOrderForm>
       <div>
         set:
-        <SetSelector /> 
+        <SetSelector light/> 
       </div>
       <div>
         name:

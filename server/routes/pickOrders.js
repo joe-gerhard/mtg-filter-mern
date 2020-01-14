@@ -24,4 +24,10 @@ router.put('/:id', (req, res) => {
   })
 })
 
+router.delete('/:id', (req, res) => {
+  PickOrder.findByIdAndDelete(req.params.id, (err, pickOrder) => {
+    res.send(pickOrder);
+  });
+})
+
 module.exports = router;

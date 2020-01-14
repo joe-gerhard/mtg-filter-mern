@@ -51,6 +51,10 @@ const PickOrder = ({ id }) => {
     history.push(`/filter/${id}`)
   }
 
+  const handleDelete = () => {
+    history.push(`/pickOrders/delete/${id}`)
+  }
+
   const handleMouseEnter = (imageUrl) => {
     setFocusedCard(imageUrl);
   }
@@ -68,6 +72,7 @@ const PickOrder = ({ id }) => {
         <div>
           <SaveButton type="submit" value="Save"/>
           <ApplyButton onClick={handleApplyToFilter}>Apply to filter</ApplyButton>
+          <button onClick={handleDelete}>Delete</button>
         </div>
         <StyledTable>
             {picks.map((pick, idx) => (

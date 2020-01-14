@@ -75,6 +75,10 @@ export const ApplyButton = styled.button(({ theme }) => css`
   }
 `);
 
+export const DeleteButton = styled(ApplyButton)`
+
+`;
+
 export const SaveButton = styled.input(({ theme }) => css`
   font-size: 14px;
   background: white;

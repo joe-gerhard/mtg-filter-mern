@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { StyledSelect } from './styles';
 
 const SetSelector = () => {
 
@@ -12,11 +13,11 @@ const SetSelector = () => {
   }
 
   return (
-    <select value={selectedSet} onChange={handleChange}>
+    <StyledSelect value={selectedSet} onChange={handleChange}>
     {sets && sets.map(set => (
       <option key={set.code}>{set.code}</option>
     ))}
-    </select>
+    </StyledSelect>
   )
 
   

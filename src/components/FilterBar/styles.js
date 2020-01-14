@@ -43,6 +43,7 @@ export const Button = styled.button(({
   margin: 5px .25vw;
   opacity: ${selected ? .4 : 1};
   transition: opacity .3s;
+  height: 18px;
 `)
 
 export const ResetButton = styled.button(({ theme }) => css`
@@ -53,4 +54,16 @@ export const ResetButton = styled.button(({ theme }) => css`
   padding: 0 5px;
   margin: 5px .25vw;
   transition: opacity .3s;
+  height: 18px;
+`);
+
+export const StyledInput = styled.input(({ theme }) => css`
+  background: black;
+  border: 1px solid ${theme.light};
+  border-radius: 5px;
+  color: ${theme.light};
+  padding: 0 5px;
+  margin: 5px .25vw;
+  transition: opacity .3s;
+  height: 18px;
 `);

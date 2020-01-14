@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { StyledFilterBar, Icon, Button, ResetButton } from "./styles";
+import { StyledFilterBar, Icon, Button, ResetButton, StyledInput } from "./styles";
 import PropTypes from "prop-types";
 import SetSelector from "../SetSelector/SetSelector";
 
@@ -24,7 +24,7 @@ const FilterBar = () => {
   return (
     <StyledFilterBar>
       <div>
-        <input type="text" name="text" value={filter.text} onChange={handleSetTextFilter}/>
+        <StyledInput type="text" name="text" value={filter.text} onChange={handleSetTextFilter}/>
         <SetSelector />
         <ResetButton onClick={handleResetFilter}>Reset</ResetButton>
       </div>

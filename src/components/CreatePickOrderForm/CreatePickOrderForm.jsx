@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyledCreatePickOrderForm } from './styles';
+import { StyledCreatePickOrderForm, Card, SubmitButton, Row, StyledInput } from './styles';
 import SetSelector from '../SetSelector/SetSelector';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 const CreatePickOrderForm = () => {
   
   const [ name, setName ] = useState('');
-  const { user, cards, selectedSet } = useSelector(state => state);
+  const { user, cards, selectedSet, loading } = useSelector(state => state);
   const history = useHistory();
 
   const handleChange = e => {
@@ -32,15 +32,19 @@ const CreatePickOrderForm = () => {
 
   return (
     <StyledCreatePickOrderForm>
-      <div>
-        set:
-        <SetSelector light/> 
-      </div>
-      <div>
-        name:
-        <input type="text" value={name} onChange={handleChange}/>
-      </div>
-      <button onClick={handleSubmit}>Submit</button>
+      <Card>
+        <Row>
+          <span>Name:</span>
+          <StyledInput type="text" value={name} onChange={handleChange}/>
+        </Row>
+        <Row>
+          <span>Set:</span>
+          <SetSelector light/> 
+        </Row>
+        <SubmitButton onClick={handleSubmit} disabled={loading}>
+          {loading ? 'Loading...' : 'Submit'}
+        </SubmitButton>
+      </Card>
     </StyledCreatePickOrderForm>
   )
 }

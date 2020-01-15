@@ -41,10 +41,10 @@ const CreatePickOrderForm = () => {
           <span>Set:</span>
           <SetSelector light/> 
         </Row>
-        <SubmitButton onClick={handleSubmit} disabled={loading}>
-          {loading ? 'Loading...' : 'Submit'}
-        </SubmitButton>
       </Card>
+      <SubmitButton onClick={handleSubmit} disabled={loading}>
+        {loading ? 'Loading...' : 'Submit'}
+      </SubmitButton>
     </StyledCreatePickOrderForm>
   )
 }

@@ -15,7 +15,7 @@ export const Card = styled.div(({ theme }) => css`
   justify-content: center;
   align-items: center;
   background: white;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 8px;
 `);
 

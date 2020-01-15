@@ -22,3 +22,7 @@ export const ConfirmButton = styled.button(({ theme }) => css`
     background: ${theme.light};
   }
 `);
+
+export const CancelButton = styled(ConfirmButton)`
+
+`;

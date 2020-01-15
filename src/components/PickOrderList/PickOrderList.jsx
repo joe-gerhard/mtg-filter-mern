@@ -1,8 +1,9 @@
 
 import React, { useEffect } from 'react'
-import { StyledPickOrders, Table, Row, Cell, StyledLink, ButtonLink } from './styles';
+import { StyledPickOrders, Table, Row, Cell, StyledLink } from './styles';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import Button from '../Button';
 
 const PickOrderList = () => {
 
@@ -50,7 +51,7 @@ const PickOrderList = () => {
           </Row>
         )})}
       </Table>
-      <ButtonLink to="/pickOrders/create">Create a new pick order</ButtonLink>
+      <Button to="/pickOrders/create" value='Create a new pick order' />
     </StyledPickOrders>
   )
 }

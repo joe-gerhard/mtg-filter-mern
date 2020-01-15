@@ -61,24 +61,6 @@ export const NameInput = styled.input`
   border: 1px solid lightgrey;
 `;
 
-export const ApplyButton = styled.button(({ theme }) => css`
-  font-size: 14px;
-  background: white;
-  border: 1px solid lightgrey;
-  border-radius: 4px;
-  margin: 0 5px;
-  padding: 0 5px;
-
-  &:hover {
-    cursor: pointer;
-    background: ${theme.light};
-  }
-`);
-
-export const DeleteButton = styled(ApplyButton)`
-
-`;
-
 export const SaveButton = styled.input(({ theme }) => css`
   font-size: 14px;
   background: white;

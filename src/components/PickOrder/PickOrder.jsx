@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { StyledPickOrder, StyledInput, StyledTable, StyledRow, StyledCell, NameInput, ApplyButton, SaveButton, StyledForm, StyledImage, DeleteButton } from './styles';
+import { StyledPickOrder, StyledInput, StyledTable, StyledRow, StyledCell, NameInput, SaveButton, StyledForm, StyledImage } from './styles';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from '../Button';
 
 
 const PickOrder = ({ id }) => {
@@ -70,9 +71,10 @@ const PickOrder = ({ id }) => {
       <h3>Set: {pickOrder.setName}</h3>
       <StyledForm onSubmit={handleSubmit}>
         <div>
+          <Button back value="Back" />
           <SaveButton type="submit" value="Save"/>
-          <ApplyButton onClick={handleApplyToFilter}>Apply to filter</ApplyButton>
-          <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+          <Button onClick={handleApplyToFilter} value="Apply to filter" />
+          <Button onClick={handleDelete} value="Delete" />
         </div>
         <StyledTable>
             {picks.map((pick, idx) => (

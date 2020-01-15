@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyledDeletePickOrderForm, ConfirmButton, CancelButton } from './styles';
+import { StyledDeletePickOrderForm } from './styles';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Axios from 'axios';
+import Button from '../Button';
 
 const DeletePickOrderForm = () => {
 
@@ -21,16 +22,12 @@ const DeletePickOrderForm = () => {
     })
   }
 
-  const handleCancel = () => {
-    history.goBack();
-  }
-
   return (
     <StyledDeletePickOrderForm>
       Are you sure you want to delete {pickOrder.name}?
       <div>
-        <CancelButton onClick={handleCancel}>Cancel</CancelButton>
-        <ConfirmButton onClick={handleDelete}>Confirm</ConfirmButton>
+        <Button back value="Cancel" />
+        <Button onClick={handleDelete} value="Confirm" />
       </div>
     </StyledDeletePickOrderForm>
   )

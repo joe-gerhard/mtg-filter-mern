@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { StyledCreatePickOrderForm, Card, SubmitButton, Row, StyledInput } from './styles';
+import { StyledCreatePickOrderForm, Card, Row, StyledInput } from './styles';
 import SetSelector from '../SetSelector/SetSelector';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from '../Button';
 
 const CreatePickOrderForm = () => {
   
@@ -42,9 +43,14 @@ const CreatePickOrderForm = () => {
           <SetSelector light/> 
         </Row>
       </Card>
-      <SubmitButton onClick={handleSubmit} disabled={loading}>
-        {loading ? 'Loading...' : 'Submit'}
-      </SubmitButton>
+      <div>
+        <Button back value="Cancel" />
+        <Button 
+          onClick={handleSubmit} 
+          disabled={loading} 
+          value={loading ? 'Loading...' : 'Submit'} 
+        />
+      </div>
     </StyledCreatePickOrderForm>
   )
 }

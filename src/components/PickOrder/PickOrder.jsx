@@ -66,7 +66,6 @@ const PickOrder = ({ id }) => {
 
   return (
     <StyledPickOrder>
-      <StyledImage src={focusedCard} alt=''/>
       <h1><NameInput type="text" value={name} onChange={handleChangeName}/></h1>
       <h3>Set: {pickOrder.setName}</h3>
       <StyledForm onSubmit={handleSubmit}>
@@ -78,38 +77,41 @@ const PickOrder = ({ id }) => {
         </div>
         <StyledTable>
             {picks.map((pick, idx) => (
-              <StyledRow 
-                key={pick.name} 
-                even={idx % 2 === 0} 
-                onMouseEnter={() => handleMouseEnter(pick.imageUrl)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <StyledCell>{pick.name}</StyledCell>
-                <StyledCell>
-                  <label htmlFor={idx}>Pick Order:</label>
-                  <StyledInput
-                    type="number" 
-                    name="pickOrder"
-                    id={`${idx}|pickOrder`}
-                    value={pick.pickOrder}
-                    onChange={handleChange}
-                    min="1"
-                    max="999"
-                  />
-                </StyledCell>
-                <StyledCell>
-                  <label htmlFor={`${idx}Tier`}>Tier:</label> 
-                  <StyledInput 
-                    type="number" 
-                    name="tier"
-                    id={`${idx}|tier`}
-                    value={pick.tier}
-                    onChange={handleChange}
-                    min="1"
-                    max="8"
-                  />
-                </StyledCell>
-              </StyledRow>
+              <>
+                <StyledImage src={pick.imageUrl} visible={focusedCard === pick.imageUrl} alt=''/>
+                <StyledRow 
+                  key={pick.name} 
+                  even={idx % 2 === 0} 
+                  onMouseEnter={() => handleMouseEnter(pick.imageUrl)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <StyledCell>{pick.name}</StyledCell>
+                  <StyledCell>
+                    <label htmlFor={idx}>Pick Order:</label>
+                    <StyledInput
+                      type="number" 
+                      name="pickOrder"
+                      id={`${idx}|pickOrder`}
+                      value={pick.pickOrder}
+                      onChange={handleChange}
+                      min="1"
+                      max="999"
+                    />
+                  </StyledCell>
+                  <StyledCell>
+                    <label htmlFor={`${idx}Tier`}>Tier:</label> 
+                    <StyledInput 
+                      type="number" 
+                      name="tier"
+                      id={`${idx}|tier`}
+                      value={pick.tier}
+                      onChange={handleChange}
+                      min="1"
+                      max="8"
+                    />
+                  </StyledCell>
+                </StyledRow>
+              </>
             ))}
         </StyledTable>
       </StyledForm>

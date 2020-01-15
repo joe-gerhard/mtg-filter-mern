@@ -75,9 +75,10 @@ export const SaveButton = styled.input(({ theme }) => css`
   }
 `);
 
-export const StyledImage = styled.img`
+export const StyledImage = styled.img(({ visible }) => css`
   position: fixed;
   left: 5vw;
   top: 15vh;
   width: 25vw;
-`;
+  visibility: ${visible ? 'visible' : 'hidden'};
+`);

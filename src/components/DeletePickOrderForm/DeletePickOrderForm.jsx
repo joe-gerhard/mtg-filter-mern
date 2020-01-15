@@ -14,7 +14,6 @@ const DeletePickOrderForm = () => {
   const handleDelete = () => {
     Axios.delete(`/pickOrders/${id}`)
     .then(response => {
-      console.log(response.data);
       history.push('/profile');
     })
     .catch(err => {

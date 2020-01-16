@@ -77,10 +77,9 @@ const PickOrder = ({ id }) => {
         </div>
         <StyledTable>
             {picks.map((pick, idx) => (
-              <>
+              <div key={pick.name}>
                 <StyledImage src={pick.imageUrl} visible={focusedCard === pick.imageUrl} alt=''/>
                 <StyledRow 
-                  key={pick.name} 
                   even={idx % 2 === 0} 
                   onMouseEnter={() => handleMouseEnter(pick.imageUrl)}
                   onMouseLeave={handleMouseLeave}
@@ -111,7 +110,7 @@ const PickOrder = ({ id }) => {
                     />
                   </StyledCell>
                 </StyledRow>
-              </>
+              </div>
             ))}
         </StyledTable>
       </StyledForm>

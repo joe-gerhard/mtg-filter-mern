@@ -33,6 +33,7 @@ const CreatePickOrderForm = () => {
 
   return (
     <StyledCreatePickOrderForm>
+      <h2>Create New Pick Order:</h2> 
       <Card>
         <Row>
           <span>Name:</span>

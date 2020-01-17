@@ -96,6 +96,9 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pickOrders: action.payload,
       }
+    case "API_ERRORED":
+      console.log(action.payload);
+      return state;
     default: return state;
   }
 }

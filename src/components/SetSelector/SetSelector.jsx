@@ -8,7 +8,6 @@ const SetSelector = ({ light }) => {
   const dispatch = useDispatch();
 
   const handleChange = e => {
-    dispatch({ type: "BEGIN_LOADING" })
     dispatch({ type: "SELECT_SET", payload: e.target.value });
   }
 

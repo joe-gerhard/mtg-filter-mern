@@ -24,6 +24,7 @@ const App = () => {
 
   useEffect(() => {
     if (selectedSet) {
+      dispatch({ type: "BEGIN_LOADING"})
       dispatch({ type: FETCH.CARDS, payload: selectedSet })
     }
   }, [selectedSet, dispatch])

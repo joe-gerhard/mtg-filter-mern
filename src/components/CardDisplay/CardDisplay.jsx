@@ -3,24 +3,15 @@ import { useSelector } from 'react-redux';
 import LoadingBar from '../LoadingBar';
 import { StyledCardDisplay } from './styles';
 import Tiers from './Tiers';
-import isFiltered from './isFiltered';
 
-const CardDisplay = ({ cards }) => {
+const CardDisplay = ({ filteredCards }) => {
 
-  const { filter, loading } = useSelector(state => state);
-
- 
-   
-  let filteredCards =[]
-  cards.forEach(card => {
-    const filtered = isFiltered(card, filter);
-    if(!filtered) filteredCards.push(card)
-  })
+  const loading = useSelector(state => state.loading);
 
   return (
     <StyledCardDisplay>
       {loading && <LoadingBar />}
-      {cards && !loading && <Tiers filteredCards={filteredCards} />}
+      {filteredCards && !loading && <Tiers filteredCards={filteredCards} />}
     </StyledCardDisplay>
   );
 }

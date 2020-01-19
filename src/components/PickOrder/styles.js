@@ -4,8 +4,6 @@ export const StyledPickOrder = styled.div(({ theme }) => css`
   display: flex;
   flex-direction: column;
   align-items: center; 
-  background: ${theme.light};
-  min-height: calc(100vh - 88px);
 `);
 
 export const StyledInput = styled.input(({ theme }) => css`

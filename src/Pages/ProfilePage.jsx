@@ -1,9 +1,9 @@
 import React from 'react'
-import UserProfile from '../components/UserProfile';
+import PickOrderList from '../components/PickOrderList';
 
 const ProfilePage = () => {
 
-  return <UserProfile />
+  return <PickOrderList />
 }
 
 export default ProfilePage;

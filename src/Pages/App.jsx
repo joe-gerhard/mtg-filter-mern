@@ -1,20 +1,13 @@
 import React, { useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FETCH } from '../redux/constants';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
-import Main from '../components/Main';
-import FilterPage from './FilterPage';
-import LoginPage from './LoginPage';
-import ProfilePage from './ProfilePage';
-import CreatePickOrderPage from './CreatePickOrderPage';
-import ShowPickOrderPage from './ShowPickOrderPage';
-import DeletePickOrderPage from './DeletePickOrderPage';
+import PageDisplay from '../components/PageDisplay';
 
 const App = () => {
 
-  const { selectedSet, user } = useSelector(state => state);
+  const { selectedSet } = useSelector(state => state);
 
   const dispatch = useDispatch();
 
@@ -32,20 +25,7 @@ const App = () => {
   return (
   <>
     <Navbar />
-    <Switch>
-      <Route exact path="/filter" component={FilterPage} />
-      <Route exact path="/login" component={LoginPage} />
-      {user.name && <Route exact path="/profile" component={ProfilePage} />}
-      {user.name && <Route exact path="/pickOrders/create" component={CreatePickOrderPage} />}
-      {user.name && <Route exact path="/pickOrders/delete/:id" component={DeletePickOrderPage} />}
-      {user.name && <Route exact path="/pickOrders/:id" component={ShowPickOrderPage} />}
-      {user.name && <Route exact path="/filter/:id" component={FilterPage} />}
-      <Route exact path="/" component={Main} />
-      <Route path="/">
-        <Redirect to='/' />
-      </Route>
-      } />
-    </Switch>
+    <PageDisplay />
     <Footer />
   </>
   )

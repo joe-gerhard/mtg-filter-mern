@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from '../Button';
+import createDefaultPickOrder from '../../util/createDefaultPickOrder';
 
 const CreatePickOrderForm = () => {
   
@@ -58,18 +59,4 @@ const CreatePickOrderForm = () => {
 
 export default CreatePickOrderForm;
 
-function createDefaultPickOrder(cards) {
-  let picks = [];
 
-  cards.forEach((card) => {
-    let pickObj = {
-      name: card.name,
-      pickOrder: 999,
-      tier: 1, 
-      imageUrl: card.imageUrl,
-    }
-    picks.push(pickObj);
-  })
-
-  return picks;
-}

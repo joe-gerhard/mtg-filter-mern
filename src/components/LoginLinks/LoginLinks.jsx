@@ -34,7 +34,7 @@ const LoginLinks = () => {
               clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               buttonText="Login"
               onSuccess={responseGoogle}
-              onFailure={responseGoogle}
+              onFailure={() => {console.log('Google Failed')}}
             />
           </ButtonContainer>
       }   

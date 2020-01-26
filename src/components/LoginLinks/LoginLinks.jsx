@@ -25,6 +25,8 @@ const LoginLinks = () => {
     })
   }
 
+  console.log(process.env.REACT_APP_TEST || 'env variables not loading')
+
   return (
     <StyledLoginLinks>
       {user.name 

@@ -11,7 +11,7 @@ const PickOrderList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/pickOrders/${user._id}`)
+    axios.get(`/pickOrders/${user._id}`)
     .then(response => {
       dispatch({type: 'SET_PICK_ORDERS', payload: response.data});
     })

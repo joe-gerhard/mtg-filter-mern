@@ -42,6 +42,4 @@ const LoginLinks = () => {
   )
 }
 
-
-
 export default LoginLinks;

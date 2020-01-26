@@ -31,7 +31,7 @@ const LoginLinks = () => {
         ? <Redirect to="/profile" /> 
         : <ButtonContainer >
             <GoogleLogin 
-              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || 'test'}
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               buttonText="Login"
               onSuccess={responseGoogle}
               onFailure={() => {console.log('Google Failed')}}

@@ -9,6 +9,8 @@ const SetSelector = ({ light }) => {
 
   const handleChange = e => {
     dispatch({ type: "SELECT_SET", payload: e.target.value });
+    dispatch({ type: "SET_PICK_ORDERS", payload: [] });
+    dispatch({ type: "SET_SELECTED_PICK_ORDER", payload: null });
   }
 
   return (

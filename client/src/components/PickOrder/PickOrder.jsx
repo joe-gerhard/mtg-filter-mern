@@ -6,11 +6,10 @@ import { useHistory } from 'react-router-dom';
 import Button from '../Button';
 
 
-const PickOrder = ({ id }) => {
+const PickOrder = () => {
 
-  const { pickOrders }  = useSelector(state => state)
+  const { selectedPickOrder: pickOrder } = useSelector(state => state)
   const dispatch = useDispatch();
-  const pickOrder = pickOrders.find(pickOrder => pickOrder._id === id);
   const [ picks, setPicks ] = useState(pickOrder.picks);
   const [ name, setName ] = useState(pickOrder.name)
   const [ focusedCard, setFocusedCard ] = useState('');
@@ -23,8 +22,7 @@ const PickOrder = ({ id }) => {
       name
     })
     .then(response => {
-      pickOrders[pickOrders.findIndex(pickOrder => pickOrder._id === id)] = response.data;
-      dispatch({type: 'SET_PICK_ORDERS', payload: pickOrders})
+      dispatch({type: 'SET_SELECTED_PICK_ORDER', payload: response.data})
     })
   }
 
@@ -49,11 +47,11 @@ const PickOrder = ({ id }) => {
   }
   
   const handleApplyToFilter = () => {
-    history.push(`/filter/${id}`)
+    history.push(`/filter`)
   }
 
   const handleDelete = () => {
-    history.push(`/pickOrders/delete/${id}`)
+    history.push(`/pickOrders/delete/${pickOrder._id}`)
   }
 
   const handleMouseEnter = (imageUrl) => {

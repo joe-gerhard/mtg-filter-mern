@@ -11,6 +11,11 @@ router.get('/:id', (req, res) => {
         !card.type.includes('Basic Land')
       )
     })
+    
+    filteredCards.sort((a, b) => {
+      return a.number - b.number
+    })
+
     res.send(filteredCards);
   })
 })

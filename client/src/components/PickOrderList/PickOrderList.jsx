@@ -20,6 +20,10 @@ const PickOrderList = () => {
     })
   },[dispatch, user]);
 
+  const handleSetSelectedPickOrder = (idx) => {
+    dispatch({ type: "SET_SELECTED_PICK_ORDER", payload: pickOrders[idx] })
+  }
+
   return (
     <StyledPickOrders>
       <h1>{user.name}'s Pick Orders</h1>
@@ -35,12 +39,12 @@ const PickOrderList = () => {
             Date Created
           </Cell>
         </Row>
-        {pickOrders.map(pickOrder => {
+        {pickOrders.map((pickOrder, idx) => {
           const date = new Date(pickOrder.createdAt)
           return (
           <Row key={pickOrder._id}>
             <Cell>
-              <StyledLink to={`pickOrders/${pickOrder._id}`}>{pickOrder.name}</StyledLink>
+              <StyledLink onClick={() => handleSetSelectedPickOrder(idx)} to={'/pickOrder'}>{pickOrder.name}</StyledLink>
             </Cell>
             <Cell>
               {pickOrder.setName}

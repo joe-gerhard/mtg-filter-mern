@@ -22,7 +22,7 @@ const PageDisplay = () => {
         {user.name && <Route exact path="/profile" component={ProfilePage} />}
         {user.name && <Route exact path="/pickOrders/create" component={CreatePickOrderPage} />}
         {user.name && <Route exact path="/pickOrders/delete/:id" component={DeletePickOrderPage} />}
-        {user.name && <Route exact path="/pickOrders/:id" component={ShowPickOrderPage} />}
+        {user.name && <Route exact path="/pickOrder" component={ShowPickOrderPage} />}
         {user.name && <Route exact path="/filter/:id" component={FilterPage} />}
         <Route exact path="/" component={Main} />
         <Route path="/">

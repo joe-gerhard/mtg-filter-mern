@@ -3,6 +3,7 @@ const initialState = {
   selectedSet: '',
   cards: [],
   pickOrders: [],
+  selectedPickOrder: null,
   user: {},
   loading: true,
   filter: {
@@ -94,6 +95,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pickOrders: action.payload,
+      }
+    case "SET_SELECTED_PICK_ORDER":
+      return {
+        ...state,
+        selectedPickOrder: action.payload,
       }
     case "API_ERRORED":
       console.log(action.payload);

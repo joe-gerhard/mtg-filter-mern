@@ -5,6 +5,8 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const usersRouter = require('./routes/users');
 const pickOrdersRouter = require('./routes/pickOrders');
+const cardsRouter = require('./routes/cards');
+const setsRouter = require('./routes/sets');
 
 const port = process.env.PORT || 3001;
 
@@ -21,6 +23,8 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use('/user', usersRouter);
 app.use('/pickOrders', pickOrdersRouter);
+app.use('/cards', cardsRouter);
+app.use('/sets', setsRouter);
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));

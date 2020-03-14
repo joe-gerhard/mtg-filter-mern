@@ -73,6 +73,13 @@ async function getCards(activeSet) {
     combinedResults = [...combinedResults, ...result.data.cards];
   });
   
+  combinedResults.forEach(card => {
+    console.log(card)
+    if(!card.imageUrl) {
+      card.imageUrl = `https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=476457&type=card`
+    }
+  })
+  
   combinedResults = combinedResults.filter(card => {
     return (
       card.imageUrl &&
@@ -80,6 +87,7 @@ async function getCards(activeSet) {
       !card.type.includes("Basic Land")
     );
   });
+  
 
   return combinedResults;
 }

@@ -6,16 +6,16 @@ const initialState = {
   user: {},
   loading: true,
   filter: {
-    Blue: false,
-    White: false,
-    Black: false,
-    Red: false,
-    Green: false,
+    U: false,
+    W: false,
+    B: false,
+    R: false,
+    G: false,
     Colorless: false,
-    Common: false,
-    Uncommon: false,
-    Rare: false,
-    Mythic: false,
+    common: false,
+    uncommon: false,
+    rare: false,
+    mythic: false,
     text: ""
   }
 }
@@ -23,8 +23,7 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch(action.type) {
     case "SETS_LOADED": 
-
-      let sortedSets = filterAndSortSets(action.payload.sets);
+      let sortedSets = filterAndSortSets(action.payload);
       let mostRecentSet = sortedSets[0].code;
 
       return {

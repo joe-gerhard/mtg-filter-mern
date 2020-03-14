@@ -8,7 +8,7 @@ const Tier = ({ tier, color, filteredCards }) => {
       <h1>Tier {tier}</h1>
       <StyledTier tier={tier} color={color}>
         {filteredCards.map(card => ( 
-          <div key={card.multiverseid}>
+          <div key={card.multiverseId}>
             {card.tier === tier && 
               <CardContainer>
                 <Card src={card.imageUrl} alt={card.name}/>

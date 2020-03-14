@@ -32,37 +32,37 @@ const FilterBar = () => {
         <Icon
           src="https://i.imgur.com/3f0zmrv.png"
           alt="White"
-          name="White"
+          name="W"
           onClick={handleSetFilter}
-          selected={filter.White}
+          selected={filter.W}
         />
         <Icon
           src="https://i.imgur.com/Cuo8vh4.png"
           alt="Blue"
-          name="Blue"
+          name="U"
           onClick={handleSetFilter}
-          selected={filter.Blue}
+          selected={filter.U}
         />
         <Icon
           src="https://i.imgur.com/1kCZTHy.png"
           alt="Black"
-          name="Black"
+          name="B"
           onClick={handleSetFilter}
-          selected={filter.Black}
+          selected={filter.B}
         />
         <Icon
           src="https://i.imgur.com/ioTehMj.png"
           alt="Red"
-          name="Red"
+          name="R"
           onClick={handleSetFilter}
-          selected={filter.Red}
+          selected={filter.R}
         />
         <Icon
           src="https://i.imgur.com/PMBUYLO.png"
           alt="Green"
-          name="Green"
+          name="G"
           onClick={handleSetFilter}
-          selected={filter.Green}
+          selected={filter.G}
         />
         <Icon
           src="https://i.imgur.com/1U3ZyBD.png"
@@ -74,30 +74,30 @@ const FilterBar = () => {
       </div>
       <div>
         <Button
-          name="Common"
+          name="common"
           onClick={handleSetFilter}
-          selected={filter.Common}
+          selected={filter.common}
         >
           Common
         </Button>
         <Button
-          name="Uncommon"
+          name="uncommon"
           onClick={handleSetFilter}
-          selected={filter.Uncommon}
+          selected={filter.uncommon}
         >
           Uncommon
         </Button>
         <Button
-          name="Rare"
+          name="rare"
           onClick={handleSetFilter}
-          selected={filter.Rare}
+          selected={filter.rare}
         >
           Rare
         </Button>
         <Button
-          name="Mythic"
+          name="mythic"
           onClick={handleSetFilter}
-          selected={filter.Mythic}
+          selected={filter.mythic}
         >
           Mythic
         </Button>

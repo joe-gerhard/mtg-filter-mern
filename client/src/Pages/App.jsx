@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FETCH } from '../redux/constants';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
 import PageDisplay from '../components/PageDisplay';
+import axios from 'axios';
 
 const App = () => {
 
@@ -12,13 +12,19 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: FETCH.SETS })
+    axios.get('/sets')
+    .then(response => {
+      dispatch({ type: "SETS_LOADED", payload: response.data })
+    })
   }, [dispatch]);
 
   useEffect(() => {
     if (selectedSet) {
       dispatch({ type: "BEGIN_LOADING"})
-      dispatch({ type: FETCH.CARDS, payload: selectedSet })
+      axios.get(`/cards/${selectedSet}`)
+      .then(response => {
+        dispatch({ type: "CARDS_LOADED", payload: response.data })
+      })
     }
   }, [selectedSet, dispatch])
 

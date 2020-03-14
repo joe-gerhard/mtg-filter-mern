@@ -2,8 +2,6 @@ import { takeEvery, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 import { FETCH } from '../constants';
 
-const url = 'https://api.magicthegathering.io/v1/';
-
 export default function* rootSaga() {
   yield takeEvery(FETCH.SETS, fetchSets);
   yield takeEvery(FETCH.CARDS, fetchCards);
@@ -28,59 +26,14 @@ function* fetchCards(action) {
 }
 
 function getSets() {
-  return fetch("https://api.magicthegathering.io/v1/sets")
+  return axios.get("/sets")
   .then(response => response.json());
 }
 
 
 async function getCards(activeSet) {
-  const resultArr = await axios.all([
-    axios.get(url + "/cards", {
-      params: {
-        set: activeSet,
-        page: 1
-      }
-    }),
-    axios.get(url + "/cards", {
-      params: {
-        set: activeSet,
-        page: 2
-      }
-    }),
-    axios.get(url + "/cards", {
-      params: {
-        set: activeSet,
-        page: 3
-      }
-    }),
-    axios.get(url + "/cards", {
-      params: {
-        set: activeSet,
-        page: 4
-      }
-    }),
-    axios.get(url + "/cards", {
-      params: {
-        set: activeSet,
-        page: 5
-      }
-    })
-  ]);
-
-  let combinedResults = [];
-
-  resultArr.forEach(result => {
-    combinedResults = [...combinedResults, ...result.data.cards];
-  });
-  
-  combinedResults.forEach(card => {
-    console.log(card)
-    if(!card.imageUrl) {
-      card.imageUrl = `https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=476457&type=card`
-    }
-  })
-  
-  combinedResults = combinedResults.filter(card => {
+  let results = await axios.get(`/cards/${activeSet}`);
+  results = results.filter(card => {
     return (
       card.imageUrl &&
       !card.type.includes("Adventure") &&
@@ -88,6 +41,5 @@ async function getCards(activeSet) {
     );
   });
   
-
-  return combinedResults;
+  return results;
 }

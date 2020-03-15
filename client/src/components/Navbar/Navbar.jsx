@@ -13,11 +13,10 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <StyledLink to="/">Home</StyledLink>
-      <StyledLink to="/filter">Filter</StyledLink>
+      <StyledLink to="/filter">Home</StyledLink>
       <StyledLink to="/publicPickOrders">Public Pick Orders</StyledLink>
       {user.name &&
-        <StyledLink to="/profile">Profile</StyledLink>
+        <StyledLink to="/profile">My Pick Orders</StyledLink>
       }
       {user.name
         ? <StyledLogoutButton onClick={handleLogout}>Logout</StyledLogoutButton>

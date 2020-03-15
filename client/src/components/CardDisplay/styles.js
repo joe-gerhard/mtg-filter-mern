@@ -36,11 +36,11 @@ export const CardDetails = styled.div(({ theme }) => css`
   width: 12vw;
 `);
 
-export const StyledTier = styled.div(({ theme, color }) => css`
+export const StyledTier = styled.div(({ theme }) => css`
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
   justify-content: center;
-  background: ${color + '22'};
+  /* background: white; */
   border-radius: 8px;
 `);

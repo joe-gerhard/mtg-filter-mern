@@ -15,6 +15,7 @@ const Navbar = () => {
     <StyledNavbar>
       <StyledLink to="/">Home</StyledLink>
       <StyledLink to="/filter">Filter</StyledLink>
+      <StyledLink to="/publicPickOrders">Public Pick Orders</StyledLink>
       {user.name &&
         <StyledLink to="/profile">Profile</StyledLink>
       }

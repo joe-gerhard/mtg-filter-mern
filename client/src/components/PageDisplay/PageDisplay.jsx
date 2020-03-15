@@ -9,6 +9,7 @@ import ShowPickOrderPage from '../../Pages/ShowPickOrderPage';
 import Main from '../Main';
 import { useSelector } from 'react-redux';
 import { StyledPageDisplay } from './styles';
+import PublicPickOrderPage from '../../Pages/PublicPickOrdersPage';
 
 const PageDisplay = () => {
 
@@ -19,6 +20,7 @@ const PageDisplay = () => {
       <Switch>
         <Route exact path="/filter" component={FilterPage} />
         <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/publicPickOrders" component={PublicPickOrderPage} />
         {user.name && <Route exact path="/profile" component={ProfilePage} />}
         {user.name && <Route exact path="/pickOrders/create" component={CreatePickOrderPage} />}
         {user.name && <Route exact path="/pickOrders/delete/:id" component={DeletePickOrderPage} />}

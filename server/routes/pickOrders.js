@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const PickOrder = require('../models/pickOrder');
 
+router.get('/', (req, res) => {
+  PickOrder.find({userId: '5e0fa7124eed0280ffa98dc7'}, (err, pickOrders) => {
+    res.send(pickOrders);
+  })
+})
+
 router.get('/:id', (req, res) => {
   PickOrder.find({userId: req.params.id}, (err, pickOrders) => {
     res.send(pickOrders);

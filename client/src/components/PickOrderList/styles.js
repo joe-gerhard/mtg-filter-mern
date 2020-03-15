@@ -47,6 +47,17 @@ export const StyledLink = styled(Link)(({ theme }) => css`
   }
 `);
 
+export const StyledEditButton = styled(Link)(({ theme }) => css`
+  color: ${theme.dark};
+  text-decoration: none;
+  margin-left: 20px;
+
+  &:hover {
+    color: grey;
+    cursor: pointer;
+  }
+`);
+
 export const ButtonLink = styled(Link)(({ theme }) => css`
   border: 1px solid lightgrey;
   border-radius: 4px;

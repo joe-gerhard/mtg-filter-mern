@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react'
-import { StyledPickOrders, Table, Row, Cell, StyledLink } from './styles';
+import { StyledPickOrders, Table, Row, Cell, StyledLink, StyledEditButton } from './styles';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../Button';
@@ -44,7 +44,8 @@ const PickOrderList = () => {
           return (
           <Row key={pickOrder._id}>
             <Cell>
-              <StyledLink onClick={() => handleSetSelectedPickOrder(idx)} to={'/pickOrder'}>{pickOrder.name}</StyledLink>
+              <StyledLink onClick={() => handleSetSelectedPickOrder(idx)} to={'/filter'}>{pickOrder.name}</StyledLink>
+              <StyledEditButton onClick={() => handleSetSelectedPickOrder(idx)} to={'/pickOrder'} >Edit</StyledEditButton>
             </Cell>
             <Cell>
               {pickOrder.setName}

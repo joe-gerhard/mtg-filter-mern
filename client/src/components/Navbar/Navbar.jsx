@@ -19,8 +19,8 @@ const Navbar = () => {
         <StyledLink to="/profile">My Pick Orders</StyledLink>
       }
       {user.name
-        ? <StyledLogoutButton onClick={handleLogout}>Logout</StyledLogoutButton>
-        : <StyledLink to="/login">Login</StyledLink>
+        ? <StyledLogoutButton onClick={handleLogout} marginLeft="auto">Logout</StyledLogoutButton>
+        : <StyledLink to="/login" marginLeft="auto">Login</StyledLink>
       }
 
     </StyledNavbar>

@@ -4,6 +4,9 @@ const PickOrder = require('../models/pickOrder');
 
 router.get('/', (req, res) => {
   PickOrder.find({userId: '5e0fa7124eed0280ffa98dc7'}, (err, pickOrders) => {
+    pickOrders.sort((a, b) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    })
     res.send(pickOrders);
   })
 })

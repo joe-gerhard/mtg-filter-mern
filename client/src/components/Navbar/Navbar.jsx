@@ -13,14 +13,15 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <StyledLink to="/filter">Home</StyledLink>
-      <StyledLink to="/publicPickOrders">Public Pick Orders</StyledLink>
+      <StyledLink to="/">Home</StyledLink>
+      <StyledLink to="/filter">Cards</StyledLink>
+      <StyledLink to="/publicPickOrders">Picks</StyledLink>
       {user.name &&
-        <StyledLink to="/profile">My Pick Orders</StyledLink>
+        <StyledLink to="/profile">My Picks</StyledLink>
       }
       {user.name
-        ? <StyledLogoutButton onClick={handleLogout} marginLeft="auto">Logout</StyledLogoutButton>
-        : <StyledLink to="/login" marginLeft="auto">Login</StyledLink>
+        ? <StyledLogoutButton onClick={handleLogout} marginleft="auto">Logout</StyledLogoutButton>
+        : <StyledLink to="/login" marginleft="auto">Login</StyledLink>
       }
 
     </StyledNavbar>

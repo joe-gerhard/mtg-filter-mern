@@ -12,19 +12,19 @@ export const StyledNavbar = styled.nav(({ theme }) => css`
   font-size: 14px;
 `);
 
-export const StyledLink = styled(Link)(({ theme, marginLeft }) => css`
+export const StyledLink = styled(Link)(({ theme, marginleft }) => css`
   color: ${theme.light};
   text-decoration: none;
   margin: 0 20px;
-  margin-left: ${marginLeft ? marginLeft : '20px'};
+  margin-left: ${marginleft ? marginleft : '20px'};
 `);
 
-export const StyledLogoutButton = styled.button(({ theme, marginLeft }) => css`
+export const StyledLogoutButton = styled.button(({ theme, marginleft }) => css`
   border: none;
   background: none;
   color: ${theme.light};
   margin: 0 20px;
-  margin-left: ${marginLeft ? marginLeft : '20px'};
+  margin-left: ${marginleft ? marginleft : '20px'};
   font-size: 14px;
 
   &:hover {

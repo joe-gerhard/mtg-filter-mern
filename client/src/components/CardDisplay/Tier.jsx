@@ -1,7 +1,14 @@
 import React from 'react'
 import { StyledTier, CardContainer, Card, CardDetails } from './styles'
+import { useDispatch } from 'react-redux'
 
 const Tier = ({ tier, color, filteredCards }) => {
+
+  const dispatch = useDispatch()
+
+  const handleOpenPopout = (card) => {
+    dispatch({ type: "OPEN_CARD_POPOUT", payload: card });
+  }
 
   return (
     <>
@@ -11,7 +18,7 @@ const Tier = ({ tier, color, filteredCards }) => {
           <div key={card.multiverseId}>
             {card.tier === tier && 
               <CardContainer>
-                <Card src={card.imageUrl} alt={card.name}/>
+                <Card onClick={() => handleOpenPopout(card)} src={card.imageUrl} alt={card.name}/>
                 <CardDetails>
                   <div>
                     [{card.tier}] {card.pickOrder}) {card.name}

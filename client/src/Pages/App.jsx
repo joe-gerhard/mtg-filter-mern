@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
 import PageDisplay from '../components/PageDisplay';
+import CardPopout from '../components/CardPopout';
 import axios from 'axios';
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
     <Navbar />
     <PageDisplay />
     <Footer />
+    <CardPopout />
   </>
   )
 }

@@ -5,6 +5,8 @@ const initialState = {
   pickOrders: [],
   publicPickOrders: [],
   selectedPickOrder: null,
+  selectedCard: '',
+  isCardPopoutOpen: false,
   user: {},
   loading: true,
   filter: {
@@ -81,6 +83,18 @@ const rootReducer = (state = initialState, action) => {
           Mythic: false,
           text: ""
         }
+      }
+    case "OPEN_CARD_POPOUT": 
+      return {
+        ...state,
+        isCardPopoutOpen: true,
+        selectedCard: action.payload,
+      }
+    case "CLOSE_CARD_POPOUT":
+      return {
+        ...state,
+        isCardPopoutOpen: false,
+        selectedCard: '',
       }
     case "SET_USER":
       return {

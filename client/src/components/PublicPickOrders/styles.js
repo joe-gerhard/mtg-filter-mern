@@ -34,10 +34,20 @@ export const Row = styled.div(({ theme, header, footer }) => css`
 
 export const Cell = styled.div(({ theme }) => css`
   margin-left: auto;
-  width: 33%;
+  width: 25%;
 `);
 
 export const StyledLink = styled(Link)(({ theme }) => css`
+  color: ${theme.dark};
+  text-decoration: none;
+
+  &:hover {
+    color: grey;
+    cursor: pointer;
+  }
+`);
+
+export const StyledCopyLink = styled.span(({ theme }) => css`
   color: ${theme.dark};
   text-decoration: none;
 

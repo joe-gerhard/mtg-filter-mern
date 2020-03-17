@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 const PublicPickOrderPage = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const { publicPickOrders } = useSelector(state => state);
+  const { publicPickOrders, user } = useSelector(state => state);
 
   useEffect(() => {
     axios.get('/pickOrders')
@@ -21,10 +21,27 @@ const PublicPickOrderPage = () => {
     history.push('/filter')
   }
 
+  const handleCopyPickOrder = (pickOrder) => {
+    axios.post('/pickOrders/create', {
+      name: 'Copy of ' + pickOrder.name,
+      setName: pickOrder.setName,
+      userId: user._id, 
+      picks: pickOrder.picks
+    })
+    .then(response => {
+      history.push('/profile');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   return (
     <PublicPickOrders 
       pickOrders={publicPickOrders} 
       handleApplyPickOrder={handleApplyPickOrder}
+      handleCopyPickOrder={handleCopyPickOrder}
+      user={user}
     />
   )
 }

@@ -32,6 +32,7 @@ const PickOrderList = () => {
           <Cell>
             Name
           </Cell>
+          <Cell></Cell>
           <Cell>
             Set
           </Cell>
@@ -45,7 +46,9 @@ const PickOrderList = () => {
           <Row key={pickOrder._id}>
             <Cell>
               <StyledLink onClick={() => handleSetSelectedPickOrder(idx)} to={'/filter'}>{pickOrder.name}</StyledLink>
-              <StyledEditButton onClick={() => handleSetSelectedPickOrder(idx)} to={'/pickOrder'} >Edit</StyledEditButton>
+            </Cell>
+            <Cell>
+              <StyledEditButton onClick={() => handleSetSelectedPickOrder(idx)} to={'/pickOrder'}>Edit</StyledEditButton>
             </Cell>
             <Cell>
               {pickOrder.setName}

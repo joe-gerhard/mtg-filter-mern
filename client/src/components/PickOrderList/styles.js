@@ -22,6 +22,7 @@ export const Row = styled.div(({ theme, header, footer }) => css`
   align-items: center;
   background: ${header ? theme.dark : 'white'};
   color: ${header ? theme.light : theme.dark};
+  width: 100%;
   
   &:first-child {
     border-radius: 8px 8px 0 0;
@@ -33,8 +34,7 @@ export const Row = styled.div(({ theme, header, footer }) => css`
 `);
 
 export const Cell = styled.div(({ theme }) => css`
-  margin-left: auto;
-  width: 33%;
+  width: 100%;
 `);
 
 export const StyledLink = styled(Link)(({ theme }) => css`
@@ -50,7 +50,6 @@ export const StyledLink = styled(Link)(({ theme }) => css`
 export const StyledEditButton = styled(Link)(({ theme }) => css`
   color: ${theme.dark};
   text-decoration: none;
-  margin-left: 20px;
 
   &:hover {
     color: grey;

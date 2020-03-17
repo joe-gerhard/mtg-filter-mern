@@ -13,9 +13,8 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <StyledLink to="/">Home</StyledLink>
-      <StyledLink to="/filter">Cards</StyledLink>
-      <StyledLink to="/publicPickOrders">Picks</StyledLink>
+      <StyledLink to="/filter">Home</StyledLink>
+      <StyledLink to="/publicPickOrders">Pick Orders</StyledLink>
       {user.name &&
         <StyledLink to="/profile">My Picks</StyledLink>
       }

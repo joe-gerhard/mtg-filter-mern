@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyledPickOrders, Table, Row, Cell, StyledLink } from './styles';
+import { StyledPickOrders, Table, Row, Cell, StyledLink, StyledCopyLink } from './styles';
 
-const PublicPickOrderList = ({ pickOrders, handleApplyPickOrder}) => {
+const PublicPickOrderList = ({ user, pickOrders, handleApplyPickOrder, handleCopyPickOrder }) => {
 
   return (
     <StyledPickOrders>
@@ -11,6 +11,7 @@ const PublicPickOrderList = ({ pickOrders, handleApplyPickOrder}) => {
           <Cell>
             Name
           </Cell>
+          <Cell></Cell>
           <Cell>
             Set
           </Cell>
@@ -24,6 +25,11 @@ const PublicPickOrderList = ({ pickOrders, handleApplyPickOrder}) => {
           <Row key={pickOrder._id}>
             <Cell>
               <StyledLink onClick={() => handleApplyPickOrder(idx)} to={'/filter'}>{pickOrder.name}</StyledLink>
+            </Cell>
+            <Cell>
+              {user.name && 
+                <StyledCopyLink onClick={() => handleCopyPickOrder(pickOrder)} to={'/profile'}>Copy</StyledCopyLink>
+              }
             </Cell>
             <Cell>
               {pickOrder.setName}
